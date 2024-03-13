@@ -1,6 +1,6 @@
 Trabajo grupal 
 
-Romina Osorio Marmolejo
+Romina Osorio Marmolejo /
 Rodrigo Vasquez Cespedes
 
 
