@@ -1,25 +1,27 @@
 import Table from 'react-bootstrap/Table'
 
-const Listado = ({ colaboradores }) => {
+const Listado = ({ colaboradores, eliminarColaborador }) => {
   return (
     <Table striped bordered hover>
       <thead>
         <tr>
-          <th scope='col'>Nombre</th>
-          <th scope='col'>Correo</th>
-          <th scope='col'>Edad</th>
-          <th scope='col'>Cargo</th>
-          <th scope='col'>Telefono</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Edad</th>
+          <th>Cargo</th>
+          <th>Telefono</th>
+          <th>Borrar</th>
         </tr>
       </thead>
       <tbody>
-        {colaboradores.map((colaborador, index) => (
-          <tr key={index}>
+        {colaboradores.map((colaborador) => (
+          <tr key={colaborador.id}>
             <td>{colaborador.nombre}</td>
             <td>{colaborador.correo}</td>
             <td>{colaborador.edad}</td>
             <td>{colaborador.cargo}</td>
             <td>{colaborador.telefono}</td>
+            <td><button type='button' class='btn btn-danger btn-sm' onClick={() => eliminarColaborador(colaborador.id)}>Borrar</button></td>
           </tr>
         ))}
       </tbody>

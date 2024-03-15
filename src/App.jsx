@@ -8,20 +8,26 @@ import './App.css'
 
 const App = () => {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores)
+
+  const eliminarColaborador = (id) => {
+    const colaboradoresFiltrados = colaboradores.filter(colaborador => colaborador.id !== id)
+    setColaboradores(colaboradoresFiltrados)
+  }
+
   return (
     <>
       <div className='container'>
         <div className='row'>
           <div className='col-12'>
             <div className='text-white p-3'>
-              <Buscador />
+              <Buscador colaboradores={colaboradores} setColaboradores={setColaboradores} />
             </div>
           </div>
           <div className='col-md-8 col-12'>
             <div className=' text-white p-3'>
               <div className='row'>
                 <div className='col'>
-                  <Listado colaboradores={colaboradores} />
+                  <Listado colaboradores={colaboradores} eliminarColaborador={eliminarColaborador} />
                 </div>
               </div>
             </div>
