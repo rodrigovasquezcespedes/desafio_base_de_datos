@@ -1,11 +1,16 @@
-const Buscador = () => {
+const Buscador = ({ colaboradores, setColaboradores }) => {
+  const handleSearch = (e) => {
+    const searchTerm = e.target.value.toLowerCase()
+    const filteredColaboradores = colaboradores.filter(colaborador =>
+      Object.values(colaborador).some(val =>
+        val.toString().toLowerCase().includes(searchTerm)
+      )
+    )
+    setColaboradores(filteredColaboradores)
+  }
+
   return (
-    <div className='container mt-3'>
-      <div className='input-group'>
-        <input type='text' className='w-25' placeholder='Buscar...' />
-      </div>
-    </div>
+    <input type='text' placeholder='Buscar colaborador' onChange={handleSearch} />
   )
 }
-
 export default Buscador
