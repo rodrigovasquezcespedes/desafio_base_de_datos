@@ -6,17 +6,17 @@ const Formulario = () => {
     <div className='container'>
       <div className='row'>
         <div className='col-12'>
-          <div className='bg-primary text-white p-3'>
+          <div className='text-white p-3'>
             <Buscador />
           </div>
         </div>
         <div className='col-md-8 col-12'>
-          <div className='bg-success text-white p-3'>
+          <div className=' text-white p-3'>
             <Listado />
           </div>
         </div>
         <div className='col-md-4 col-12'>
-          <div className='bg-warning text-white p-3'>
+          <div className='text-white p-3'>
             <div className='container mt-3'>
               <div className='row'>
                 <div className='col-12'>
