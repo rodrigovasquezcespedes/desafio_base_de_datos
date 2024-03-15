@@ -1,9 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { BaseColaboradores } from './BaseDatos/BaseColaboradores'
 import Formulario from './components/Formulario'
 import Listado from './components/Listado'
 import Buscador from './components/Buscador'
+import { useState } from 'react'
+import './App.css'
 
 const App = () => {
+  const [colaboradores, setColaboradores] = useState(BaseColaboradores)
   return (
     <>
       <div className='container'>
@@ -17,7 +21,7 @@ const App = () => {
             <div className=' text-white p-3'>
               <div className='row'>
                 <div className='col'>
-                  <Listado />
+                  <Listado colaboradores={colaboradores} />
                 </div>
               </div>
             </div>

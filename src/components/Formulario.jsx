@@ -1,7 +1,3 @@
-import Alert from './Alert'
-import Buscador from './Buscador'
-import Listado from './Listado'
-
 const Formulario = () => {
   return (
     <form>

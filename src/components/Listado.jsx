@@ -13,13 +13,15 @@ const Listado = ({ colaboradores }) => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-          <td> </td>
-        </tr>
+        {colaboradores.map((colaborador, index) => (
+          <tr key={index}>
+            <td>{colaborador.nombre}</td>
+            <td>{colaborador.correo}</td>
+            <td>{colaborador.edad}</td>
+            <td>{colaborador.cargo}</td>
+            <td>{colaborador.telefono}</td>
+          </tr>
+        ))}
       </tbody>
     </Table>
   )
