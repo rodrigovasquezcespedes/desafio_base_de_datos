@@ -1,15 +1,15 @@
 const Listado = () => {
   return (
     <div className='row'>
-      <div className='col-md-6'>
+      <div className='col'>
         <table className='table'>
           <thead>
             <tr>
-              <th scope='col'>#</th>
-              <th scope='col'>Primera</th>
-              <th scope='col'>Segunda</th>
-              <th scope='col'>Tercera</th>
-              <th scope='col'>Cuarta</th>
+              <th scope='col'>Nombre</th>
+              <th scope='col'>Correo</th>
+              <th scope='col'>Edad</th>
+              <th scope='col'>Cargo</th>
+              <th scope='col'>Telefono</th>
             </tr>
           </thead>
           <tbody>
