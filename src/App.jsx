@@ -38,7 +38,7 @@ const App = () => {
                 <div className='row'>
                   <div className='col-12'>
                     <h3 className='text-dark text-center'>Agregar Colaborador</h3>
-                    <Formulario />
+                    <Formulario colaboradores={colaboradores} setColaboradores={setColaboradores} />
                   </div>
                 </div>
               </div>
