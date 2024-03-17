@@ -13,6 +13,14 @@ const App = () => {
     const colaboradoresFiltrados = colaboradores.filter(colaborador => colaborador.id !== id)
     setColaboradores(colaboradoresFiltrados)
   }
+  const buscarColaboradores = (terminoBusqueda) => {
+    const colaboradoresFiltrados = BaseColaboradores.filter(colaborador =>
+      Object.values(colaborador).some(value =>
+        typeof value === 'string' && value.toLowerCase().includes(terminoBusqueda.toLowerCase())
+      )
+    )
+    setColaboradores(colaboradoresFiltrados)
+  }
 
   return (
     <>
@@ -20,7 +28,7 @@ const App = () => {
         <div className='row'>
           <div className='col-12'>
             <div className='text-white p-3'>
-              <Buscador colaboradores={colaboradores} setColaboradores={setColaboradores} />
+              <Buscador buscarColaboradores={buscarColaboradores} />
             </div>
           </div>
           <div className='col-md-8 col-12'>

@@ -1,24 +1,15 @@
-const Buscador = ({ colaboradores, setColaboradores }) => {
-  const buscar = (e) => {
-    const terminos = e.target.value.toLowerCase()
-    // Verifica si el término de búsqueda está vacío
-    if (terminos === ' ') {
-      // Si está vacío, establece la lista completa de colaboradores
-      setColaboradores(colaboradores)
-    } else {
-      // Si no está vacío, filtra los colaboradores como antes
-      const filtrarColaboradores = colaboradores.filter(colaborador =>
-        Object.values(colaborador).some(value =>
-          value.toString().toLowerCase().includes(terminos)
-        )
-      )
-      setColaboradores(filtrarColaboradores)
-    }
+import { useState } from 'react'
+
+const Buscador = ({ buscarColaboradores }) => {
+  const [terminoBusqueda, setTerminoBusqueda] = useState('')
+
+  const handleChange = (event) => {
+    setTerminoBusqueda(event.target.value)
+    buscarColaboradores(event.target.value)
   }
 
   return (
-    <input type='text' placeholder='Buscar colaborador' onChange={buscar} />
+    <input type='text' placeholder='Buscar colaborador' value={terminoBusqueda} onChange={handleChange} />
   )
 }
-
 export default Buscador
