@@ -1,8 +1,7 @@
-const Buscador = ({ onSearch }) => {
+const Buscador = ({ buscarColaboradores }) => {
   return (
 
-    <input type='text' placeholder='Buscar Colaborador' onChange={(e) => onSearch(e.target.value)} />
-
+    <input type='text' onChange={buscarColaboradores} placeholder='Buscar Colaboradores' />
   )
 }
 

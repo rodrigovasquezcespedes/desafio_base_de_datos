@@ -9,20 +9,37 @@ import Alert from './components/Alert'
 
 const App = () => {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores)
+  const [busqueda, setBusqueda] = useState('')
   const [alert, setAlert] = useState({ msg: '', color: '' })
-
   const eliminarColaborador = (id) => {
-    const colaboradoresFiltrados = colaboradores.filter(colaborador => colaborador.id !== id)
-    setColaboradores(colaboradoresFiltrados)
+    setColaboradores(prevColaboradores => {
+      const colaboradoresFiltrados = prevColaboradores.filter(colaborador => colaborador.id !== id)
+      if (busqueda !== '') {
+        const filtrados = colaboradoresFiltrados.filter(colaborador =>
+          colaborador.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+          colaborador.correo.toLowerCase().includes(busqueda.toLowerCase()) ||
+          colaborador.edad.toString().includes(busqueda) ||
+          colaborador.cargo.toLowerCase().includes(busqueda.toLowerCase()) ||
+          colaborador.telefono.includes(busqueda)
+        )
+        return filtrados
+      } else {
+        return colaboradoresFiltrados
+      }
+    })
   }
 
-  const buscarColaboradores = (terminoBusqueda) => {
-    const resultadoBusqueda = colaboradores.filter((colaborador) =>
-      Object.values(colaborador).some((valor) =>
-        valor.toString().toLowerCase().includes(terminoBusqueda.toLowerCase())
-      )
+  const buscarColaboradores = (e) => {
+    const { value } = e.target
+    setBusqueda(value)
+    const filtrados = colaboradores.filter(colaborador =>
+      colaborador.nombre.toLowerCase().includes(value.toLowerCase()) ||
+      colaborador.correo.toLowerCase().includes(value.toLowerCase()) ||
+      colaborador.edad.toString().includes(value) ||
+      colaborador.cargo.toLowerCase().includes(value.toLowerCase()) ||
+      colaborador.telefono.includes(value)
     )
-    setColaboradores(resultadoBusqueda)
+    setColaboradores(filtrados)
   }
 
   return (
@@ -30,10 +47,10 @@ const App = () => {
       <div className='container'>
         <div className='row'>
           <div className='col-12'>
+            <h1 className='text-center'>Listado de colaboradores</h1>
+            <h3 className='text-center text-dark'>Proyecto grupal Romina Osorio y Rodrigo Vasquez</h3>
             <div className='text-white p-3'>
-              <h1 className='text-center'>Listado de colaboradores</h1>
-              <h3 className='text-center text-dark'>Proyecto grupal Romina Osorio y Rodrigo Vasquez</h3>
-              <Buscador onSearch={buscarColaboradores} />
+              <Buscador buscarColaboradores={buscarColaboradores} />
             </div>
           </div>
           <div className='col-md-8 col-12'>
