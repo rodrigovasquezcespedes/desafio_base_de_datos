@@ -9,37 +9,26 @@ import Alert from './components/Alert'
 
 const App = () => {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores)
-  const [busqueda, setBusqueda] = useState('')
   const [alert, setAlert] = useState({ msg: '', color: '' })
+
   const eliminarColaborador = (id) => {
-    setColaboradores(prevColaboradores => {
-      const colaboradoresFiltrados = prevColaboradores.filter(colaborador => colaborador.id !== id)
-      if (busqueda !== '') {
-        const filtrados = colaboradoresFiltrados.filter(colaborador =>
-          colaborador.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
-          colaborador.correo.toLowerCase().includes(busqueda.toLowerCase()) ||
-          colaborador.edad.toString().includes(busqueda) ||
-          colaborador.cargo.toLowerCase().includes(busqueda.toLowerCase()) ||
-          colaborador.telefono.includes(busqueda)
-        )
-        return filtrados
-      } else {
-        return colaboradoresFiltrados
-      }
-    })
+    /* filter crea un nuevo arreglo de los colaboradores que son distintos al id seleccionado */
+    const colaboradoresFiltrados = colaboradores.filter(colaborador => colaborador.id !== id)
+    setColaboradores(colaboradoresFiltrados)
   }
 
-  const buscarColaboradores = (e) => {
-    const { value } = e.target
-    setBusqueda(value)
-    const filtrados = colaboradores.filter(colaborador =>
-      colaborador.nombre.toLowerCase().includes(value.toLowerCase()) ||
-      colaborador.correo.toLowerCase().includes(value.toLowerCase()) ||
-      colaborador.edad.toString().includes(value) ||
-      colaborador.cargo.toLowerCase().includes(value.toLowerCase()) ||
-      colaborador.telefono.includes(value)
-    )
-    setColaboradores(filtrados)
+  const buscarColaboradores = (terminoBusqueda) => {
+    if (terminoBusqueda.trim() === '') {
+      setColaboradores(colaboradores)
+    } else {
+      // Si se encuentra algo, muestra solo esos datos
+      const colaboradoresFiltrados = colaboradores.filter(colaborador =>
+        Object.values(colaborador).some(value =>
+          typeof value === 'string' && value.toLowerCase().includes(terminoBusqueda.toLowerCase())
+        )
+      )
+      setColaboradores(colaboradoresFiltrados)
+    }
   }
 
   return (
