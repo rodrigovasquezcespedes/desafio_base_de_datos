@@ -10,24 +10,23 @@ import Alert from './components/Alert'
 const App = () => {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores)
   const [alert, setAlert] = useState({ msg: '', color: '' })
+  const [colaboradoresFiltrados, setColaboradoresFiltrados] = useState([])
 
   const eliminarColaborador = (id) => {
-    /* filter crea un nuevo arreglo de los colaboradores que son distintos al id seleccionado */
     const colaboradoresFiltrados = colaboradores.filter(colaborador => colaborador.id !== id)
     setColaboradores(colaboradoresFiltrados)
   }
 
-  const buscarColaboradores = (terminoBusqueda) => {
-    if (terminoBusqueda.trim() === '') {
-      setColaboradores(colaboradores)
+  const buscarColaboradores = (filtro) => {
+    if (filtro.trim() === '') {
+      setColaboradoresFiltrados([])
     } else {
-      // Si se encuentra algo, muestra solo esos datos
       const colaboradoresFiltrados = colaboradores.filter(colaborador =>
-        Object.values(colaborador).some(value =>
-          typeof value === 'string' && value.toLowerCase().includes(terminoBusqueda.toLowerCase())
+        Object.values(colaborador).some(valor =>
+          typeof valor === 'string' && valor.toLowerCase().includes(filtro.toLowerCase())
         )
       )
-      setColaboradores(colaboradoresFiltrados)
+      setColaboradoresFiltrados(colaboradoresFiltrados)
     }
   }
 
@@ -46,7 +45,7 @@ const App = () => {
             <div className=' text-white p-3'>
               <div className='row'>
                 <div className='col'>
-                  <Listado colaboradores={colaboradores} eliminarColaborador={eliminarColaborador} />
+                  <Listado colaboradores={colaboradoresFiltrados.length > 0 ? colaboradoresFiltrados : colaboradores} eliminarColaborador={eliminarColaborador} />
                 </div>
               </div>
             </div>
