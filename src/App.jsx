@@ -51,7 +51,7 @@ const App = () => {
                   <div className='col-12'>
                     <h3 className='text-dark text-center'>Agregar Colaborador</h3>
                     <Formulario setAlert={setAlert} colaboradores={colaboradores} setColaboradores={setColaboradores} />
-                    <div className='p2'>
+                    <div className='p-2'>
                       {alert.msg !== '' && <Alert msg={alert.msg} color={alert.color} />}
                     </div>
                   </div>
