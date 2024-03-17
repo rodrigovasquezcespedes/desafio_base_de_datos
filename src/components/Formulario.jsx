@@ -93,7 +93,7 @@ const Formulario = ({ colaboradores, setColaboradores, setAlert }) => {
         />
       </Form.Group>
 
-      <Button variant='primary' type='submit'>
+      <Button variant='primary' type='submit' className='w-100'>
         Agregar Colaborador
       </Button>
     </Form>
