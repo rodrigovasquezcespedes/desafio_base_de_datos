@@ -8,7 +8,7 @@ import './App.css'
 
 const App = () => {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores)
-
+  const [alert, setAlert] = useState({ msg: '', color: '' })
   const eliminarColaborador = (id) => {
     const colaboradoresFiltrados = colaboradores.filter(colaborador => colaborador.id !== id)
     setColaboradores(colaboradoresFiltrados)
@@ -38,7 +38,8 @@ const App = () => {
                 <div className='row'>
                   <div className='col-12'>
                     <h3 className='text-dark text-center'>Agregar Colaborador</h3>
-                    <Formulario colaboradores={colaboradores} setColaboradores={setColaboradores} />
+                    <Formulario setAlert={setAlert} colaboradores={colaboradores} setColaboradores={setColaboradores} />
+                    {alert.msg !== '' && <Alert msg={alert.msg} color={alert.color} />}
                   </div>
                 </div>
               </div>

@@ -3,25 +3,20 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 
 const Formulario = ({ colaboradores, setColaboradores }) => {
-  const [nuevoColaborador, setNuevoColaborador] = useState({
-    nombre: '',
-    correo: '',
-    edad: '',
-    cargo: '',
-    telefono: ''
-  })
-
-  const handleChange = (e) => {
-    setNuevoColaborador({
-      ...nuevoColaborador,
-      [e.target.name]: e.target.value
-    })
-  }
+  const [nombreNuevoColaborador, setNombre] = useState('')
+  const [correoNuevoColaborador, setCorreo] = useState('')
+  const [edadNuevoColaborador, setEdad] = useState('')
+  const [cargoNuevoColaborador, setCargo] = useState('')
+  const [telefonoNuevoColaborador, setTelefono] = useState('')
 
   const handleSend = (e) => {
     e.preventDefault()
-    setColaboradores([...colaboradores, nuevoColaborador])
+  
   }
+
+
+
+
 
   return (
     <Form onSubmit={handleSend}>
@@ -30,8 +25,8 @@ const Formulario = ({ colaboradores, setColaboradores }) => {
           type='text'
           placeholder='Nombre del colaborador'
           name='nombre'
-          onChange={handleChange}
-          value={nuevoColaborador.nombre}
+          onChange={(e) => setNombre(e.target.value)}
+          value={nombreNuevoColaborador}
         />
       </Form.Group>
 
@@ -40,8 +35,8 @@ const Formulario = ({ colaboradores, setColaboradores }) => {
           type='email'
           placeholder='Email del colaborador'
           name='correo'
-          onChange={handleChange}
-          value={nuevoColaborador.correo}
+          onChange={(e) => setCorreo(e.target.value)}
+          value={correoNuevoColaborador}
         />
       </Form.Group>
 
@@ -50,8 +45,8 @@ const Formulario = ({ colaboradores, setColaboradores }) => {
           type='text'
           placeholder='Edad del colaborador'
           name='edad'
-          onChange={handleChange}
-          value={nuevoColaborador.edad}
+          onChange={(e) => setEdad(e.target.value)}
+          value={edadNuevoColaborador}
         />
       </Form.Group>
 
@@ -60,8 +55,8 @@ const Formulario = ({ colaboradores, setColaboradores }) => {
           type='text'
           placeholder='Cargo del colaborador'
           name='cargo'
-          onChange={handleChange}
-          value={nuevoColaborador.cargo}
+          onChange={(e) => setCargo(e.target.value)}
+          value={cargoNuevoColaborador}
         />
       </Form.Group>
 
@@ -70,8 +65,8 @@ const Formulario = ({ colaboradores, setColaboradores }) => {
           type='text'
           placeholder='Telefono del colaborador'
           name='telefono'
-          onChange={handleChange}
-          value={nuevoColaborador.telefono}
+          onChange={(e) => setTelefono(e.target.value)}
+          value={telefonoNuevoColaborador}
         />
       </Form.Group>
 

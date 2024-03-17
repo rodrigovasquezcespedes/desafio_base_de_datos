@@ -1,9 +1,9 @@
-import React from 'react'
-
-const Alert = () => {
+const Alerta = ({ msg, color }) => {
   return (
-    <div>Alert</div>
+    <div className={`alert alert-${color}`} role='alert'>
+      {msg}
+    </div>
   )
 }
 
-export default Alert
+export default Alerta
