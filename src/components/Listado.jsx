@@ -21,7 +21,7 @@ const Listado = ({ colaboradores, eliminarColaborador }) => {
             <td>{colaborador.edad}</td>
             <td>{colaborador.cargo}</td>
             <td>{colaborador.telefono}</td>
-            <td><button type='button' class='btn btn-danger btn-sm' onClick={() => eliminarColaborador(colaborador.id)}>Borrar</button></td>
+            <td><button type='button' className='btn btn-danger btn-sm' onClick={() => eliminarColaborador(colaborador.id)}>Borrar</button></td>
           </tr>
         ))}
       </tbody>

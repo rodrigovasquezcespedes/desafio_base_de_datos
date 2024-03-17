@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 
-const Formulario = ({ colaboradores, setColaboradores }) => {
+const Formulario = ({ colaboradores, setColaboradores, setAlert }) => {
   const [nombreNuevoColaborador, setNombre] = useState('')
   const [correoNuevoColaborador, setCorreo] = useState('')
   const [edadNuevoColaborador, setEdad] = useState('')
@@ -11,12 +11,35 @@ const Formulario = ({ colaboradores, setColaboradores }) => {
 
   const handleSend = (e) => {
     e.preventDefault()
-  
+
+    if (
+      nombreNuevoColaborador.trim() === '' ||
+      correoNuevoColaborador.trim() === '' ||
+      edadNuevoColaborador.trim() === '' ||
+      cargoNuevoColaborador.trim() === '' ||
+      telefonoNuevoColaborador.trim() === ''
+    ) {
+      setAlert({ msg: 'Debes completar todos los campos', color: 'danger' })
+      return
+    }
+    setAlert({ msg: 'Colaborador ingresado con éxito', color: 'success' })
+    setNombre('')
+    setCorreo('')
+    setEdad('')
+    setCargo('')
+    setTelefono('')
+
+    const nuevoColaborador = {
+      id: Date.now(),
+      nombre: nombreNuevoColaborador,
+      correo: correoNuevoColaborador,
+      edad: edadNuevoColaborador,
+      cargo: cargoNuevoColaborador,
+      telefono: telefonoNuevoColaborador
+    }
+
+    setColaboradores([...colaboradores, nuevoColaborador])
   }
-
-
-
-
 
   return (
     <Form onSubmit={handleSend}>

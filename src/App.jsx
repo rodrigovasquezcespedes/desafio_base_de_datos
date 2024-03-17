@@ -5,6 +5,7 @@ import Listado from './components/Listado'
 import Buscador from './components/Buscador'
 import { useState } from 'react'
 import './App.css'
+import Alert from './components/Alert'
 
 const App = () => {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores)
