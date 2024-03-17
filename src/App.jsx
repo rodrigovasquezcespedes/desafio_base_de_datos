@@ -21,6 +21,7 @@ const App = () => {
         <div className='row'>
           <div className='col-12'>
             <div className='text-white p-3'>
+              <h1>Listado de colaboradores</h1>
               <Buscador colaboradores={colaboradores} setColaboradores={setColaboradores} />
             </div>
           </div>
