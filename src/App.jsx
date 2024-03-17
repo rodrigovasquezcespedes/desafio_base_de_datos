@@ -31,7 +31,8 @@ const App = () => {
         <div className='row'>
           <div className='col-12'>
             <div className='text-white p-3'>
-              <h1>Listado de colaboradores</h1>
+              <h1 className='text-center'>Listado de colaboradores</h1>
+              <h3 className='text-center text-dark'>Proyecto grupal Romina Osorio y Rodrigo Vasquez</h3>
               <Buscador onSearch={buscarColaboradores} />
             </div>
           </div>
