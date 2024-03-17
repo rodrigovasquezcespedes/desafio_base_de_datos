@@ -5,10 +5,11 @@ import Listado from './components/Listado'
 import Buscador from './components/Buscador'
 import { useState } from 'react'
 import './App.css'
+import Alert from './components/Alert'
 
 const App = () => {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores)
-
+  const [alert, setAlert] = useState({ msg: '', color: '' })
   const eliminarColaborador = (id) => {
     /* filter crea un nuevo arreglo de los colaboradores que son distintos al id seleccionado */
     const colaboradoresFiltrados = colaboradores.filter(colaborador => colaborador.id !== id)
@@ -50,7 +51,8 @@ const App = () => {
                 <div className='row'>
                   <div className='col-12'>
                     <h3 className='text-dark text-center'>Agregar Colaborador</h3>
-                    <Formulario />
+                    <Formulario setAlert={setAlert} colaboradores={colaboradores} setColaboradores={setColaboradores} />
+                    {alert.msg !== '' && <Alert msg={alert.msg} color={alert.color} />}
                   </div>
                 </div>
               </div>
