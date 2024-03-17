@@ -14,7 +14,7 @@ const Listado = ({ colaboradores, eliminarColaborador }) => {
         </tr>
       </thead>
       <tbody>
-        {colaboradores.map((colaborador) => (
+        {colaboradores.map((colaborador) => (// map permite iterar sobre cada elemento del arreglo
           <tr key={colaborador.id}>
             <td>{colaborador.nombre}</td>
             <td>{colaborador.correo}</td>

@@ -10,11 +10,15 @@ const App = () => {
   const [colaboradores, setColaboradores] = useState(BaseColaboradores)
 
   const eliminarColaborador = (id) => {
+    /* filter crea un nuevo arreglo de los colaboradores que son distintos al id seleccionado */
     const colaboradoresFiltrados = colaboradores.filter(colaborador => colaborador.id !== id)
     setColaboradores(colaboradoresFiltrados)
   }
   const buscarColaboradores = (terminoBusqueda) => {
+    /* filter crea un nuevo arreglo de los colaboradores que contengan el caracter marcados */
     const colaboradoresFiltrados = BaseColaboradores.filter(colaborador =>
+      /* Object.values(colaborador) crea un array que devuelve los datos del objeto */
+      /* some es un método de array que verifica si al menos un elemento cumple con la condición */
       Object.values(colaborador).some(value =>
         typeof value === 'string' && value.toLowerCase().includes(terminoBusqueda.toLowerCase())
       )
